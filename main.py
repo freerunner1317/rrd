@@ -1,28 +1,35 @@
-#!/usr/bin/env python3
-"""Usage: view-image <image>"""
-from PyQt5.QtWidgets import QWidget, QLabel
+import MySQLdb
+import sys
+from PyQt5 import uic
+from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QPixmap
 
 
-class ImageViewer(QWidget):
-    def __init__(self, image_path, parent=None):
-        super().__init__(parent)
+def initDataBase():
+    conn = MySQLdb.connect('localhost', 'username', 'password', 'table_name')
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM table_name")
 
-        label = QLabel(self)
-        pixmap = QPixmap(image_path)
-        label.setPixmap(pixmap)
+class MainWindow(QMainWindow):
+   def __init__(self):
+      super(MainWindow, self).__init__()
+      uic.loadUi('gui.ui', self)
 
-        self.resize(pixmap.width(), pixmap.height())  # fit window to the image
-        self.setWindowTitle('PyQt5 Image Viewer')
+      pixmap = QPixmap("1.jpg")
+      pixmap = pixmap.scaledToWidth(780)
+      print(pixmap.width())
+
+      self.photoLabel.setPixmap(pixmap)
+      self.setWindowTitle('PyQt5 Image Viewer')
+
+
 
 
 if __name__ == '__main__':
-    import sys
-    from PyQt5.QtWidgets import QApplication
+    app = QApplication(sys.argv)  # создание объекта самого приложения
+    window = MainWindow()
 
-    if len(sys.argv) < 2:
-        sys.exit(__doc__)
-    app = QApplication(sys.argv)
-    image_viewer = ImageViewer(sys.argv[1])
-    image_viewer.show()
+
+
+    window.show()
     sys.exit(app.exec_())

@@ -6,6 +6,10 @@ from PyQt5.QtGui import QPixmap
 
 def finish():
     window.photoLabel.clear()
+    window.first_answer.setEnabled(False)
+    window.second_answer.setEnabled(False)
+    window.third_answer.setEnabled(False)
+    window.manage_but.setEnabled(False)
 
 def checkAnswer(numberButton, objectsButton):
     global currentQuestion

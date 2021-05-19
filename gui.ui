@@ -179,6 +179,24 @@
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QPushButton" name="onece">
+    <property name="geometry">
+     <rect>
+      <x>225</x>
+      <y>597</y>
+      <width>356</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>19</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Еще раз</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

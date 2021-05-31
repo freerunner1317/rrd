@@ -18,7 +18,12 @@ def finish():
     window.manage_but.setVisible(False)
     window.explain_lable.setVisible(False)
     window.onceAgain.setVisible(True)
-    window.finishLabel.setText("Количество правильных ответов = " + str(round(historyAns/(lenRows + 1) * 100)) + "%")
+
+    if (historyAns == (lenRows + 1)):
+        window.finishLabel.setText("Тест пройден")
+    else:
+        window.finishLabel.setText("Тест провален")
+        #window.finishLabel.setText("Количество правильных ответов = " + str(round(historyAns/(lenRows + 1) * 100)) + "%")
 # функция, которая вызывается при нажатии "еще раз" для отображения нужных элементов
 def startAgain():
     global currentQuestion

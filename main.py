@@ -20,10 +20,10 @@ def finish():
     window.onceAgain.setVisible(True)
 
     if (historyAns == (lenRows + 1)):
-        window.finishLabel.setText("Тест пройден")
+        window.finishLabel.setText("Тест пройден \n Количество правильных ответов = " + str(round(historyAns / (lenRows + 1) * 100)) + "%")
     else:
-        window.finishLabel.setText("Тест провален")
-        #window.finishLabel.setText("Количество правильных ответов = " + str(round(historyAns/(lenRows + 1) * 100)) + "%")
+        window.finishLabel.setText("Тест провален \n Количество правильных ответов = " + str(round(historyAns / (lenRows + 1) * 100)) + "%")
+
 # функция, которая вызывается при нажатии "еще раз" для отображения нужных элементов
 def startAgain():
     global currentQuestion
